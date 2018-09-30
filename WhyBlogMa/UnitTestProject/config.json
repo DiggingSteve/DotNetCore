@@ -1,0 +1,8 @@
+{
+  "default": {
+    "PgsqlConfig": {
+
+      "ConnectionStr": "Host=localhost;Port=5432;Username=root;Password=Dlive185;Database=User"
+    }
+  }
+}
