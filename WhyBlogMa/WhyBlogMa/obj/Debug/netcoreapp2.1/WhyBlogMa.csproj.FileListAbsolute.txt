@@ -12,3 +12,17 @@ D:\git\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.RazorAssemblyInfo.c
 D:\git\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.RazorTargetAssemblyInfo.cache
 D:\git\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.dll
 D:\git\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.pdb
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\bin\Debug\netcoreapp2.1\WhyBlogMa.deps.json
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\bin\Debug\netcoreapp2.1\WhyBlogMa.runtimeconfig.json
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\bin\Debug\netcoreapp2.1\WhyBlogMa.runtimeconfig.dev.json
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\bin\Debug\netcoreapp2.1\WhyBlogMa.dll
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\bin\Debug\netcoreapp2.1\WhyBlogMa.pdb
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.csprojAssemblyReference.cache
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.csproj.CoreCompileInputs.cache
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.RazorAssemblyInfo.cache
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.RazorAssemblyInfo.cs
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.AssemblyInfoInputs.cache
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.AssemblyInfo.cs
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.RazorTargetAssemblyInfo.cache
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.dll
+D:\git\DotNetCore\WhyBlogMa\WhyBlogMa\obj\Debug\netcoreapp2.1\WhyBlogMa.pdb

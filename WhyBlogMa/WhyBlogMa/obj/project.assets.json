@@ -11546,11 +11546,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\git\\WhyBlogMa\\WhyBlogMa\\WhyBlogMa.csproj",
+      "projectUniqueName": "D:\\git\\DotNetCore\\WhyBlogMa\\WhyBlogMa\\WhyBlogMa.csproj",
       "projectName": "WhyBlogMa",
-      "projectPath": "D:\\git\\WhyBlogMa\\WhyBlogMa\\WhyBlogMa.csproj",
+      "projectPath": "D:\\git\\DotNetCore\\WhyBlogMa\\WhyBlogMa\\WhyBlogMa.csproj",
       "packagesPath": "C:\\Users\\yaodui.WFF\\.nuget\\packages\\",
-      "outputPath": "D:\\git\\WhyBlogMa\\WhyBlogMa\\obj\\",
+      "outputPath": "D:\\git\\DotNetCore\\WhyBlogMa\\WhyBlogMa\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

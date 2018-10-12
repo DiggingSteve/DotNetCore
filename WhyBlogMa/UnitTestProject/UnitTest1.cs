@@ -11,6 +11,11 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
+using Infrastructure.PgSql;
+using System.Data;
+using Infrastructure.Dapper;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace UnitTestProject
 {
@@ -20,23 +25,12 @@ namespace UnitTestProject
         [TestMethod]
         public void Conn()
         {
+            //string sql = "insert into tuser values (@a,@b)";
 
+            //PgSqlHelper.ExecuteNonQuery(sql, new NpgsqlParameter("@a",1), new NpgsqlParameter("@b",1 ));
 
-            var connString = "Host=localhost;Port=5432;Username=root;Password=Dlive185;Database=User";
-
-            using (var conn = new NpgsqlConnection(connString))
-            {
-                conn.Open();
-
-                // Retrieve all rows
-                using (var cmd = new NpgsqlCommand("SELECT * FROM tuser", conn))
-
-                {
-
-                    var a = cmd.ExecuteScalar();
-                    Console.WriteLine(a.ToString());
-                }
-            }
+            var list = DapperCommand<TUser>.GetList("select id,name from tuser");
+            DapperCommand<TUser>.Update("");
         }
 
         [TestMethod]
@@ -47,7 +41,7 @@ namespace UnitTestProject
             //    //string a = ConfigurationManager.Config.GetSection<String>(new string[] { "PgsqlConfig", "ConnectionStr" });
             //    //Console.WriteLine(a);
 
-            
+
             //});
             string key = "aaa";
             CacheHelper.CachePool.Set(key, 1111, TimeSpan.FromSeconds(3));
@@ -88,6 +82,18 @@ namespace UnitTestProject
         {
 
             CacheHelper.CachePool.Set("a", 1, TimeSpan.FromSeconds(100), true);
+
+        }
+
+        [TestMethod]
+        public void TestExpression()
+        {
+            using (var con = new NpgsqlConnection(Infrastructure.PgSql.PgConfig.ConnectionStr))
+            {
+                var a = new DapperExtension<TUser>();
+                a.Where(p => p.Id > 0 && p.Name == "ddd");
+                
+            }
 
         }
 
