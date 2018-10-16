@@ -91,10 +91,21 @@ namespace UnitTestProject
             using (var con = new NpgsqlConnection(Infrastructure.PgSql.PgConfig.ConnectionStr))
             {
                 var a = new DapperExtension<TUser>();
-                a.Where(p => p.Id > 0 && p.Name == "ddd");
+                var list =
+                    a.Select("max(id),name")
+                    .Where(p => (p.Id >= 0 || p.Name == "name") && p.Name != null)
+                    .GroupBy(p=>new { p.Name})
+                    .Having("having count(1)>0")
+                   .ToList(con);
                 
+
             }
 
+        }
+
+        private int Get0(int i)
+        {
+            return i;
         }
 
 
