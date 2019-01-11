@@ -36,17 +36,23 @@ namespace UnitTestProject
         [TestMethod]
         public void TestConfig()
         {
-            //Parallel.For(0, 10, i =>
-            //{
-            //    //string a = ConfigurationManager.Config.GetSection<String>(new string[] { "PgsqlConfig", "ConnectionStr" });
-            //    //Console.WriteLine(a);
+            var builder = new ConfigurationBuilder()
+     .SetBasePath(Directory.GetCurrentDirectory())
+     .AddJsonFile("config2.json", true, reloadOnChange: true);
+
+            var config = builder.Build();
+
+            //读取配置
+            Console.WriteLine(config["default:code"]);
 
 
-            //});
-            string key = "aaa";
-            CacheHelper.CachePool.Set(key, 1111, TimeSpan.FromSeconds(3));
-            Thread.Sleep(1000);
-            CacheHelper.CachePool.Set(key, 1111, TimeSpan.FromSeconds(100));
+            Console.WriteLine("更改文件之后，按下任意键");
+
+
+            Console.WriteLine(config["default:code"]);
+
+
+
 
         }
 
@@ -94,10 +100,31 @@ namespace UnitTestProject
                 var list =
                     a.Select("max(id),name")
                     .Where(p => (p.Id >= 0 || p.Name == "name") && p.Name != null)
-                    .GroupBy(p=>new { p.Name})
+                    .GroupBy(p => new { p.Name })
                     .Having("having count(1)>0")
                    .ToList(con);
-                
+
+
+            }
+
+        }
+        [TestMethod]
+        public void TestInsert()
+        {
+            using (var con = new NpgsqlConnection(Infrastructure.PgSql.PgConfig.ConnectionStr))
+            {
+                var a = new DapperExtension<TUser>();
+                int time = TimeSpanCalculator.Run(() =>
+                {
+                    for (int i = 0; i < 1000000; i++)
+                    {
+                        var user = new TUser() { Id = 4, Name = "dadasd" };
+                        a.Insert(user, con);
+                    }
+                });
+                Console.WriteLine(time.ToString());
+
+
 
             }
 
@@ -108,8 +135,25 @@ namespace UnitTestProject
             return i;
         }
 
+        public static int 库存 = 999;
+        public static object _lock = new object();
 
+        [TestMethod]
+        public void TestAsync()
+        {
 
+            Parallel.For(0, 10, (i) =>
+            {
+                lock (_lock)
+                {
+                    处理请求(库存);
+                }
+            });
+        }
 
+        public void 处理请求(int a)
+        {
+
+        }
     }
 }

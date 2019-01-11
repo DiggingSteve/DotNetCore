@@ -16,26 +16,39 @@ namespace Infrastructure.Dapper
     {
         public DapperExtension()
         {
-
+            var obj = typeof(T);
+            GetField(obj);
+            GetTableName(obj);
         }
 
         public string TableName { get; set; }
+        /// <summary>
+        /// 查询字段
+        /// </summary>
         public string Fields { get; set; } = "";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<string> AllFields { get; set; } = new List<string>();
 
         public string GroupFields { get; set; } = "";
 
         public string HavingFields { get; set; } = "";
 
+        public string InsertFields { get; set; } = "";
+
         public string WhereOpt { get; set; }
 
         public void GetField(Type obj)
         {
-            if (Fields.Length > 0) return;
+            
             var fieldList = obj.GetProperties();
 
             for (int i = 0; i < fieldList.Length; i++)
             {
                 var property = fieldList[i];
+                AllFields.Add(property.Name);
                 Fields += property.Name;
                 if (i < fieldList.Length - 1)
                 {
@@ -48,9 +61,7 @@ namespace Infrastructure.Dapper
 
         public IEnumerable<T> ToList(DbConnection con, IDbTransaction tran = null)
         {
-            var obj = typeof(T);
-            GetField(obj);
-            GetTableName(obj);
+ 
             string sqlTemplate = "select {0} from {1} where {2} {3} {4}";
             string sql = string.Format(sqlTemplate, Fields, TableName, WhereOpt, GroupFields, HavingFields);
             return con.Query<T>(sql, tran).ToList();
@@ -95,12 +106,17 @@ namespace Infrastructure.Dapper
             return this;
         }
 
-        //public int Insert(T obj,DbConnection con,IDbTransaction tran)
-        //{
-        //    string sql = "insert into {1} ({0}) values ({2})";
+        public int Insert(T obj, DbConnection con, IDbTransaction tran=null)
+        {
+            string sql = "insert into {1} ({0}) values ({2}) returning id";
+            var properties = obj.GetType().GetProperties();
 
-        //    con.Execute()
-        //}
+            foreach (var property in properties)
+            {
+                property.GetValue(obj);
+            }
+            return 1;
+        }
 
 
 
